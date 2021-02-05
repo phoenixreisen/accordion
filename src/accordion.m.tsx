@@ -20,16 +20,31 @@ type State = {
 
 //--- Funktionen -----
 
+function scrollTo(itemnr: number, isOpen: boolean, duration: number) {
+    setTimeout(() => {  // scrollt nach der Animation zum angeklickten Element
+        const item = document.querySelector(`#acc-item-${itemnr}`);
+        const html = document.documentElement;
+        const body = document.body;
+        if (item && !isOpen) {
+            item.scrollIntoView(true);
+            // minus Höhe der Leiste
+            html.scrollTop -= 50;
+            body.scrollTop -= 50;
+        }
+    }, duration);
+}
+
 function toggle(state: State, itemnr: number, type: 'primary'|'secondary') {
     const {openPrimary, openSecondary} = state;
+
     if(type === 'primary') {
-        state.openPrimary = (openPrimary !== itemnr)
-            ? itemnr
-            : -1
+        const isOpen = (openPrimary !== itemnr);
+        state.openPrimary = isOpen ? itemnr : -1;
+        scrollTo(itemnr, isOpen, isOpen ? 500:700);
     } else {
-        state.openSecondary = (openSecondary !== itemnr)
-            ? itemnr
-            : -1;
+        const isOpen = (openSecondary !== itemnr);
+        state.openSecondary = isOpen ? itemnr : -1;
+        scrollTo(itemnr, isOpen, isOpen ? 500:700);
     }
 }
 
