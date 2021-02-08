@@ -21,43 +21,47 @@ type State = {
 
 //--- Funktionen -----
 
-function getMaxHeight(itemnr: number): number {
-    const $item = document.querySelector(`#acc-item-${itemnr} .acc-section`) as HTMLElement;
-    const $inner = $item.children.item(0) as HTMLElement;
-    const style = window.getComputedStyle($inner);
-    const margin = parseInt(style.margin, 10);
-    const padding = parseInt(style.padding, 10);
-    const height = $inner.offsetHeight;
-    return (height + (2*margin) + (2*padding));
+export function getMaxHeight($container: HTMLElement): number {
+    if($container) {
+        const style = window.getComputedStyle($container);
+        const height = parseInt(style.height);
+        const margin = parseInt(style.margin);
+        const padding = parseInt(style.padding);
+        return (height + (2*margin) + (2*padding));
+    }
+    return 0;
 }
 
-function scrollTo(itemnr: number, isOpen: boolean, duration = 500, jumpMinus = 0): void {
+export function scrollTo($item: HTMLElement, isOpen: boolean, delay = 500, jumpMinus = 0): void {
     setTimeout(() => {  // scrollt nach der Animation zum angeklickten Element
-        const item = document.querySelector(`#acc-item-${itemnr}`);
         const html = document.documentElement;
         const body = document.body;
-        if (item && !isOpen) {
-            item.scrollIntoView(true);
+        if ($item && !isOpen) {
+            $item.scrollIntoView(true);
             html.scrollTop -= jumpMinus;
             body.scrollTop -= jumpMinus;
         }
-    }, duration);
+    }, delay);
 }
 
 function toggle(state: State, attrs: Attrs, itemnr: number, type: 'primary'|'secondary') {
     const {openPrimary, openSecondary} = state;
     const {jumpMinus} = attrs;
 
+    const $item = (document.querySelector(`#acc-item-${itemnr}`) as HTMLElement) ?? null;
+    const $section = ($item?.querySelector('.acc-section') as HTMLElement) ?? null;
+    const $inner = ($section?.children.item(0) as HTMLElement) ?? null;
+
     if(type === 'primary') {
         const isOpen = (openPrimary.itemnr === itemnr);
         openPrimary.itemnr = isOpen ? -1 : itemnr;
-        openPrimary.maxheight = getMaxHeight(itemnr);
-        scrollTo(itemnr, isOpen, 500, jumpMinus || 0);
+        openPrimary.maxheight = getMaxHeight($inner);
+        scrollTo($item, isOpen, 500, jumpMinus || 0);
     } else {
         const isOpen = (openSecondary.itemnr === itemnr);
         openSecondary.itemnr = isOpen ? -1 : itemnr;
-        openSecondary.maxheight = getMaxHeight(itemnr);
-        scrollTo(itemnr, isOpen, 500, jumpMinus || 0);
+        openSecondary.maxheight = getMaxHeight($inner);
+        scrollTo($item, isOpen, 500, jumpMinus || 0);
     }
 }
 
@@ -79,8 +83,8 @@ export const Accordion = {
                     const {headline, fas, content, type} = item;
                     const isOpen = (index === openPrimary.itemnr || index === openSecondary.itemnr);
                     const maxHeight = (type === 'primary' && openPrimary.maxheight)
-                                    || (type === 'secondary' && openSecondary.maxheight)
-                                    || 0;
+                        || (type === 'secondary' && openSecondary.maxheight)
+                        || 0;
 
                     return (
                         <article id={`acc-item-${index}`} class={`acc-item acc-${type}`}>

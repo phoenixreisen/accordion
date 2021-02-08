@@ -19,7 +19,6 @@ test.spec('Accordion', () => {
         test(Accordion.should.have(1, '.fa-train')).equals(true);
         test(Accordion.should.have(7, '.acc-item')).equals(true);
         test(Accordion.should.have(2, '.acc-primary')).equals(true);
-        test(Accordion.should.have(7, '.acc-animated')).equals(true);
         test(Accordion.should.have(5, '.acc-secondary')).equals(true);
         test(Accordion.should.have(5, '.acc-opener--grayed')).equals(true); // Secondarys
     });
@@ -53,5 +52,14 @@ test.spec('Accordion', () => {
         test(Accordion.should.have(2, openClass)).equals(true);
         Accordion.click('#acc-item-4 > a'); // Primary
         test(Accordion.should.have(2, openClass)).equals(true);
+    });
+
+    test('should calc max-height for content container correctly', () => {
+        const getMaxHeight = require('../dist/accordion.m.js').getMaxHeight;
+        const $container = document.createElement('div');
+        $container.style.height = '800px';
+        $container.style.padding = '10px';  // x2 wg. top+bottom
+        $container.style.margin = '10px';   // x2 wg. top+bottom
+        test(getMaxHeight($container)).equals(840);
     });
 });
