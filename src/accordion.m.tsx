@@ -52,17 +52,14 @@ function toggle(state: State, attrs: Attrs, itemnr: number, type: 'primary'|'sec
     const $section = ($item?.querySelector('.acc-section') as HTMLElement) ?? null;
     const $inner = ($section?.children.item(0) as HTMLElement) ?? null;
 
-    if(type === 'primary') {
-        const isOpen = (openPrimary.itemnr === itemnr);
-        openPrimary.itemnr = isOpen ? -1 : itemnr;
-        openPrimary.maxheight = getMaxHeight($inner);
-        scrollTo($item, isOpen, 500, jumpMinus || 0);
-    } else {
-        const isOpen = (openSecondary.itemnr === itemnr);
-        openSecondary.itemnr = isOpen ? -1 : itemnr;
-        openSecondary.maxheight = getMaxHeight($inner);
-        scrollTo($item, isOpen, 500, jumpMinus || 0);
-    }
+    const clicked = (type === 'primary'
+        ? openPrimary
+        : openSecondary
+    );
+    const isOpen = (clicked.itemnr === itemnr);
+    clicked.itemnr = isOpen ? -1 : itemnr;
+    clicked.maxheight = getMaxHeight($inner);
+    scrollTo($item, isOpen, 500, jumpMinus || 0);
 }
 
 //--- Komponente -----
