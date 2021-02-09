@@ -8,7 +8,7 @@ Object.assign(global, m);
 test.spec('Accordion', () => {
     const { Port1, Item1, Item2, Item3 } = contents;
 
-    const openClass = '.acc-section--open';
+    const openClass = '.acc-open-item';
     const AccordionView = require('../dist/accordion.m.js').default;
     const Accordion = mq(m(AccordionView, { items: [ Port1, Item1, Item2, Item3, Port1, Item2, Item1 ] }, []));
 

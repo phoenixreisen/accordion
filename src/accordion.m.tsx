@@ -84,13 +84,13 @@ export const Accordion = {
                         || 0;
 
                     return (
-                        <article id={`acc-item-${index}`} class={`acc-item acc-${type}`}>
+                        <article id={`acc-item-${index}`} class={`acc-item ${isOpen ? 'acc-open-item':''} acc-${type}`}>
                             <a href="javascript:" onclick={() => toggle(state, attrs, index, type)}
                                 class={`acc-opener ${type === 'secondary' ? 'acc-opener--grayed':''}`}>
                                 <span><i class={`fas fa-${fas} mr1`}></i> {headline}</span>
-                                <i class={`fas fa-chevron-${isOpen ? 'down':'up'} ml1`}></i>
+                                <i class={'fas fa-chevron-up ml1'}></i>
                             </a>
-                            <div class={`acc-section ${isOpen ? 'acc-section--open': ''}`} style={`max-height: ${isOpen ? maxHeight : 0}px`}>
+                            <div class={'acc-section'} style={`max-height: ${isOpen ? maxHeight : 0}px`}>
                                 <div class="acc-inner">
                                     { m(content) }
                                 </div>
