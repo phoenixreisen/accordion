@@ -1,6 +1,6 @@
 # Phoenix "Akkordeon"
 
-**JS Akkordeon-Komponente auf Mithril-Basis.** Die Komponente stellt nur die Implementierung, die Styles kommen wie immer aus dem Design-System.
+**JS Akkordeon-Komponente mittels Mithril.js.** Die Komponente stellt nur die Implementierung, die Styles kommen wie immer aus dem Design-System.
 
 Die Komponente ist Teil des [Phoenix Reisen Design-Systems](https://design-system.phoenixreisen.net).
 
