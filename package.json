@@ -8,7 +8,6 @@
   "module": "src/accordion.m.tsx",
   "scripts": {
     "prepublish": "npm test",
-    "publish:example": "npx gh-pages -d example",
     "test": "ospec --preload ./test-setup.js",
     "pretest": "del-cli ./dist && npm run copy:img && npm run compile:ts && npm run compile:scss && npm run compile:example",
     "posttest": "del-cli ./test",
