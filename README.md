@@ -26,7 +26,7 @@ const Accordion = require('@phoenixreisen/accordion');
 import Accordion from '@phoenixreisen/accordion';
 ```
 
-#### Parameter-Struktur (attrs)
+#### Parameterstruktur (attrs)
 
 ```js
 const Prime = {
