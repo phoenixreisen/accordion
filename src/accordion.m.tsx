@@ -2,11 +2,13 @@ import m from 'mithril';
 
 //--- Types -----
 
+type ItemType = 'primary'|'secondary';
+
 type Item = {
     fas: string,
+    type: ItemType,
     content: m.Component,
     headline: m.Component | string,
-    type: 'primary'|'secondary',
 }
 
 type Attrs = {
@@ -44,7 +46,7 @@ export function scrollTo($item: HTMLElement, isOpen: boolean, delay = 500, jumpM
     }, delay);
 }
 
-function toggle(state: State, attrs: Attrs, itemnr: number, type: 'primary'|'secondary') {
+function toggle(state: State, attrs: Attrs, itemnr: number, type: ItemType) {
     const {openPrimary, openSecondary} = state;
     const {jumpMinus} = attrs;
 
