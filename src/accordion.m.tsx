@@ -1,4 +1,5 @@
 /** @jsx m */
+
 import m from 'mithril';
 
 //--- Types -----
