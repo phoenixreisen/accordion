@@ -18,17 +18,24 @@ npm install --save @phoenixreisen/accordion
 
 ## Anwendung
 
-```js
-// entweder CommonJS
-const Accordion = require('@phoenixreisen/accordion');
+#### Parameter / Props
 
-// oder ES6+
-import Accordion from '@phoenixreisen/accordion';
+```ts
+type Attrs = {
+    jumpMinus: number,
+
+    items: Array<{
+        fas: string,
+        content: m.Component,
+        headline: m.Component | string,
+        type: 'primary'|'secondary',
+    }>,
+}
 ```
 
-#### Parameterstruktur (attrs)
+#### Props Beispiel
 
-```js
+```ts
 const Prime = {
     fas: 'ship',
     type: 'primary',
@@ -54,16 +61,18 @@ const items = [ Prime, Secondary, Secondary, Secondary ];
 
 #### Aufruf
 
-```js
-// Hyperscript bzw. Javascript
-m(Accordion, { items: [0,1,2,1,3, 0,2,2,1,3, 0,1,2,3].map(current =>
-    items[current]
-)});
+```ts
+import Accordion from '@phoenixreisen/accordion';
 
 // JSX
 <Accordion items={[0,1,2,1,3, 0,2,2,1,3, 0,1,2,3].map(current =>
     items[current]
 )} />
+
+// Hyperscript bzw. Javascript
+m(Accordion, { items: [0,1,2,1,3, 0,2,2,1,3, 0,1,2,3].map(current =>
+    items[current]
+)});
 ```
 
 ## Test
@@ -84,12 +93,12 @@ git push
 
 ## Github Page
 
-Demo wird mittels Rollup gebaut.
+Demo kann manuell mittels Rollup gebaut werden.
 
 ```bash
 [npm i]
 npm run compile:example
 ```
 
-Nach dem `git push` zu erreichen unter:
+Nach `git push` automatisch zu erreichen unter:
 https://phoenixreisen.github.io/accordion/
