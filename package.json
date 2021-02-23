@@ -1,6 +1,6 @@
 {
   "name": "@phoenixreisen/accordion",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Demo des Akkord. Styles kommen aus dem Design-System.",
   "homepage": "https://design-system.phoenixreisen.net",
   "main": "dist/accordion.m.js",
