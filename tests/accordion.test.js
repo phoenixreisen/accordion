@@ -31,7 +31,7 @@ test.spec('Accordion', () => {
         test(Accordion.should.not.have(openClass)).equals(true);
     });
 
-    test('should differantiate Primarys and Secondarys', () => {
+    test('should differentiate Primarys and Secondarys', () => {
         test(Accordion.should.not.have(openClass)).equals(true);
         Accordion.click('#acc-item-4 > a'); // Primary
         Accordion.click('#acc-item-2 > a'); // Secondary
