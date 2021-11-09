@@ -1,5 +1,3 @@
-/** @jsx m */
-
 import m from 'mithril';
 
 //--- Types -----
@@ -80,7 +78,7 @@ export const Accordion = {
 
         return (
             <section class={`accordion`}>
-                {attrs.items?.map((item, index: number) => {
+                {attrs.items?.map((item:Item, index:number) => {
                     const {headline, fas, content, type} = item;
                     const isOpen = (index === openPrimary.itemnr || index === openSecondary.itemnr);
                     const maxHeight = (type === 'primary' && openPrimary.maxheight)

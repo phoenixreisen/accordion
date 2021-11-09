@@ -1,6 +1,6 @@
-const register = require('ignore-styles').default;
-const jsdom = require('jsdom');
-const test = require('ospec');
+import ignore from 'ignore-styles';
+import jsdom from 'jsdom';
+import ospec from 'ospec';
 
 const dom = new jsdom.JSDOM('', {
     // für `requestAnimationFrame`
@@ -12,9 +12,9 @@ Object.assign(global, {
     document: dom.window.document,
     requestAnimationFrame: dom.window.requestAnimationFrame,
 });
-require('mithril');
-register(['.css', '.sass', '.scss']);
 
-test.after(function() {
+ignore.default(['.css', '.sass', '.scss']);
+
+ospec.after(function() {
     dom.window.close();
 });

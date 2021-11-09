@@ -5,7 +5,7 @@
 
 		"jsx": "react",
 		"jsxFactory": "m",
-		"module": "CommonJS",
+		"module": "ESNext",
 		"moduleResolution": "Node",
 
 		"sourceMap": false,
@@ -25,8 +25,8 @@
 		"noUnusedParameters": true,
 	},
 	"include": [
-	  "src/**/*.ts",
-	  "src/**/*.tsx",
+		"src/**/*.ts",
+		"src/**/*.tsx",
 	],
 	"exclude": [
 		"node_modules"

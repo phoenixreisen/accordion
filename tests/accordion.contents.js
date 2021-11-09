@@ -1,4 +1,6 @@
-const Port1 = {
+import m from 'mithril';
+
+export const Port1 = {
     fas: 'ship',
     type: 'primary',
     headline: 'Hafen Bremen',
@@ -12,8 +14,9 @@ const Port1 = {
             ]);
         },
     },
-}
-const Item1 = {
+};
+
+export const Item1 = {
     fas: 'leaf',
     type: 'secondary',
     headline: 'Ausflug in die Natur',
@@ -28,8 +31,9 @@ const Item1 = {
             ]);
         },
     },
-}
-const Item2 = {
+};
+
+export const Item2 = {
     fas: 'cloud',
     type: 'secondary',
     headline: 'Ausflug auf einen Berg',
@@ -44,8 +48,9 @@ const Item2 = {
             ]);
         },
     },
-}
-const Item3 = {
+};
+
+export const Item3 = {
     fas: 'train',
     type: 'secondary',
     headline: 'Ausflug auf\'s  Wasser',
@@ -63,6 +68,6 @@ const Item3 = {
             ]);
         },
     },
-}
+};
 
-module.exports = { Port1, Item1, Item2, Item3 }
+export default { Port1, Item1, Item2, Item3 };
